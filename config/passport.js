@@ -67,7 +67,7 @@ module.exports = function(passport) {
     // LOCAL SIGNUP ============================================================
     // =========================================================================
     passport.use('local-signup', new LocalStrategy({
-        // by default, local strategy uses username and password, we will override with email
+        // by default, local strategy uses username and password, override with email
         usernameField : 'email',
         passwordField : 'password',
         passReqToCallback : true // allows to pass in the req from our route (lets us check if a user is logged in or not)
@@ -104,7 +104,7 @@ module.exports = function(passport) {
     
                         newUser.local.email    = email;
                         newUser.local.password = newUser.generateHash(password);
-    
+                        newUser.name           = req.body.name;
                         newUser.save(function(err) {
                             if (err)
                                 throw err;
@@ -181,6 +181,7 @@ module.exports = function(passport) {
                         newUser.facebook.token = token;
                         newUser.facebook.name  = profile.name.givenName + ' ' + profile.name.familyName;
                         newUser.facebook.email = profile.emails[0].value;
+                        newUser.name           = req.body.name;
 
                         newUser.save(function(err) {
                             if (err)
@@ -256,6 +257,7 @@ module.exports = function(passport) {
                         newUser.google.token = token;
                         newUser.google.name  = profile.displayName;
                         newUser.google.email = profile.emails[0].value; // pull the first email
+                        newUser.name         = req.body.name;
 
                         newUser.save(function(err) {
                             if (err)
