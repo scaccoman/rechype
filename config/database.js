@@ -1,5 +1,5 @@
 module.exports = {
 
-    'url' : process.env.DATABASEUR
+    'url' : process.env.DATABASEURL
 
 };
