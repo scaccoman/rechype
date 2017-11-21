@@ -1,0 +1,53 @@
+<% include ./partials/header %>
+
+        <div class="jumbotron">
+          <div class="container">
+            <h1 id="jumboText">RECipe - My Recipes</h1> 
+          </div>
+        </div>
+        <div class="container">
+            <div class="panel panel-default hidePopup" id="popup">
+                <div class="panel-heading">New Receipt<span id="closeBtn" class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span></div>
+                <div class="panel-body">
+                    <div class="input-group">
+                        <h5 id="message" role="alert"></h5>
+                        <input type="text" class="form-control inputSpacing" placeholder="Name" id="name">
+                        <input type="text" class="form-control inputSpacing" placeholder="Description" id="description">
+                        <input type="text" class="form-control inputSpacing" placeholder="Image URL (optional)" id="image">
+                        <ul id="ingredients">
+                            <li><input type="text" class="form-control ingredients inputSpacing" style="-webkit-border-radius: 10px;
+                                                                                                        -moz-border-radius: 10px;
+                                                                                                        border-radius: 10px;" placeholder="Ingredient"></li>
+                            <span id="ingredientsSpacer"></span>
+                        </ul>
+                        
+                        
+                        <button class="form-control btn btn-success inputSpacing" id="newIngredient"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+                        <input type="submit" class="form-control btn btn-default inputSpacing" value="Add Receipt" id="newReceipt"/>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            
+            <div class="row">
+                <% if (currentUser) { %>
+                <div class='col-sm-6 col-md-4'>
+                                                <div class='thumbnail' id="thumbnailContainer">
+                                                    <div class='caption'>
+                                                      <h1><span class="glyphicon glyphicon-plus-sign" id="plusThumbnail" aria-hidden="true"></span></h1>
+                                                      <h1 id="addNewReceiptText">Quick Add</h1>
+                                                    </div>
+                                                </div>
+                                            </div>
+                <% } %>
+                <span id="thumbnails"></span>
+              <!--AJAX APPEND PAGEINIT HAPPENS HERE-->
+            </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="/scripts/applyMessages.js"></script>
+        <script type="text/javascript" src="/scripts/myRecipes.js"></script>
+        
+<% include ./partials/footer %>

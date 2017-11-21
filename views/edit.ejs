@@ -1,0 +1,51 @@
+<% include ./partials/header %>
+        <div class="container">
+            <div class="col-sm-6 col-sm-offset-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Add a New Receipt</div>
+                        <div class="panel-body">
+                            <div class="input-group">
+                                <h5 id="message" role="alert"></h5>
+                                <input type="text" class="form-control inputSpacing" placeholder="Name" id="name" value="<%= receipt.name %>">
+                                <textarea rows="10" type="text" class="form-control inputSpacing" placeholder="Description" id="description"><%= receipt.description %></textarea>
+                                <input type="text" class="form-control inputSpacing" placeholder="Image URL (optional)" id="image" value="<%= receipt.image %>">
+                                <span id="selectContainer">
+                        			<select value="<%= receipt.category %>" class="selectpicker show-menu-arrow form-control inputSpacing" id="category" data-live-search="true" data-container="body">
+                                    	<option value="starters">Starters</option>
+                                        <option value="soups">Soups</option>
+                                        <option value="pasta">Pasta</option>
+                                        <option value="meat">Meat</option>
+                                        <option value="vegetarian">Vegetarian</option>
+                                        <option value="desserts">Desserts</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </span>
+                                <ul id="ingredients">
+                                    <% receipt.ingredients.forEach(function(ingredient){ %>
+                                        <li><input type="text" class="form-control ingredients inputSpacing" style="-webkit-border-radius: 10px;
+                                                                                                                -moz-border-radius: 10px;
+                                                                                                                border-radius: 10px;" placeholder="Ingredient" value="<%= ingredient %>"></li>
+                                    <% }) %>
+                                    <span id="ingredientsSpacer"></span>
+                                </ul>
+                                
+                                
+                                <button class="form-control btn btn-success inputSpacing" id="newIngredient"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span></button>
+                                <input type="submit" class="form-control btn btn-primary inputSpacing" value="Add Receipt" id="newReceipt"/>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+        <script type="text/javascript" src="/scripts/applyMessages.js"></script>
+        <script type="text/javascript" src="/scripts/edit.js"></script>
+        <script>
+            $('.selectpicker').selectpicker({
+              style: 'btn-default',
+              size: 4
+            });
+        </script>
+<% include ./partials/footer %>

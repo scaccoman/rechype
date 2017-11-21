@@ -1,0 +1,29 @@
+<% include ./partials/header %>
+    
+    <div class="container">
+            <div class="i-am-centered">
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Preferences</div>
+                        <div class="panel-body">
+                            <div class="input-group">
+                                <h5 id="message" role="alert"></h5>
+                                <input type="text" class="form-control inputSpacing" placeholder="fontFamily" id="fontFamily">
+                                <input class="form-control inputSpacing jscolor {onFineChange:'update(this)'}" value="<%= preferences.backgroundColor %>" id="backgroundColor">
+                                <input type="submit" class="form-control btn btn-primary inputSpacing" value="Save" id="savePreference"/>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/scripts/jscolor.js"></script>
+    <script type="text/javascript" src="/scripts/applyMessages.js"></script>
+    <script type="text/javascript" src="/scripts/settings.js"></script>
+<% include ./partials/footer %>

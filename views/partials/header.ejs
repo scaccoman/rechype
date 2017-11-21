@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <title>REChype</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+        <link rel="stylesheet" href="/stylesheets/main.css">
+    </head>
+    <body>
+        <nav id="navbarTransparency" class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> REChype</a>
+            </div>
+        
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li id="homeNav"><a href="/home">Home</span></a></li>
+                <% if (currentUser) { %>
+                <li id="myReceiptsNav"><a href="/receipts/my">My Receipts</a></li>
+                <li id="newReceiptNav"><a href="/receipts/new">New Receipt</a></li>
+                <% } %>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">All</a></li>
+                    <li><a href="#">Starters</a></li>
+                    <li><a href="#">Soups</a></li>
+                    <li><a href="#">Pasta</a></li>
+                    <li><a href="#">Meat</a></li>
+                    <li><a href="#">Vegetarian</a></li>
+                    <li><a href="#">Desserts</a></li>
+                    <li><a href="#">Other</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <form action="/search" method="POST" class="navbar-form navbar-right">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search" id="searchBox" name="searchBox">
+                  <span class="input-group-btn">
+                    <button type="submit" class="btn btn-default">
+                      <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                  </span>
+                </div>
+              </form>
+              <ul class="nav navbar-nav navbar-right">
+                <% if (currentUser) { %>
+                  <li><a href="#">Logged in as <%= currentUser.username %></a></li>
+                <% } %>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <% if (currentUser) { %>
+                      <li><a href="/auth/logout">Logout</a></li>
+                      <li role="separator" class="divider"></li>
+                      <li id="accountNav"><a href="/auth/profile">My Account</a></li>
+                      <li id="settingsNav"><a href="/settings">Settings</a></li>
+                    <% } else { %>
+                      <li id="loginNav"><a href="/auth/login">Login</a></li>
+                      <li id="signupNav"><a href="/auth/signup">Signup</a></li>
+                    <% } %>
+                  </ul>
+                </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>

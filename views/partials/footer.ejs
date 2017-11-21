@@ -1,0 +1,31 @@
+        <script type="text/javascript" src="/scripts/applySettings.js"></script>
+        <script>
+          window.fbAsyncInit = function() {
+            FB.init({
+              appId      : '132443044082161',
+              xfbml      : true,
+              version    : 'v2.10'
+            });
+            FB.AppEvents.logPageView();
+          };
+        
+          (function(d, s, id){
+             var js, fjs = d.getElementsByTagName(s)[0];
+             if (d.getElementById(id)) {return;}
+             js = d.createElement(s); js.id = id;
+             js.src = "https://connect.facebook.net/en_US/sdk.js";
+             fjs.parentNode.insertBefore(js, fjs);
+           }(document, 'script', 'facebook-jssdk'));
+           
+          // Add slideDown animation to Bootstrap dropdown when expanding.
+          $('.dropdown').on('show.bs.dropdown', function() {
+            $(this).find('.dropdown-menu').first().stop(true, true).slideDown();
+          });
+        
+          // Add slideUp animation to Bootstrap dropdown when collapsing.
+          $('.dropdown').on('hide.bs.dropdown', function() {
+            $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
+          });
+        </script>
+    </body>
+</html>

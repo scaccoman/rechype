@@ -1,0 +1,49 @@
+<% include ./partials/header %>
+
+    <div class="container show">
+        <div>
+            <h4 style="font-style: italic;">Search Results for: <span id="searchConditions"><%= searchConditions %></span></h4>
+        </div>
+            <div class="row">
+             <% receipts.forEach(function(receipt){ %>
+              <div class="col-sm-12 col-md-6">
+                <h5 id="message" role="alert"></h5>
+                <div class="thumbnail">
+                  <% if (receipt.image !== "") { %>
+                    <img src="<%= receipt.image %>" alt="receipt image">
+                  <% } else { %>
+                    <img src="http://worldseriesdreaming.com/wp-content/uploads/2014/08/blog12.jpg" alt="receipt image">
+                  <% } %>
+                  <div class="caption">
+                    <h3><%= receipt.name %></h3>
+                    <em><%= receipt.category %></em>
+                    <p><%= receipt.description %></p>
+                    <ul>
+                        <% receipt.ingredients.forEach(function(desc){ %>
+                            <li><%= desc %></li>
+                        <% }) %>
+                    </ul>
+                    <p>
+                        <% if (currentUser && receipt.author.id.equals(currentUser._id)) { %>
+                          <a href="/receipts/<%= receipt._id %>/edit" class="btn btn-primary" role="button">Edit</a> 
+                          <button class="btn btn-danger" role="button">Delete</button>
+                          <input type="hidden" value="<%= receipt._id %>">
+                          <em>Submitted by you</em>
+                        <% } else { %>
+                          <em>Submitted by <%= receipt.author.username %></em>
+                        <% } %>
+                    <!--//DELETE ROUTE WORKING WITH ajax-->
+                    </p>
+                  </div>
+                </div>
+              </div>
+             <% }) %>
+            </div>
+        
+    </div>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/scripts/applyMessages.js"></script>
+    <script type="text/javascript" src="/scripts/search.js"></script>
+<% include ./partials/footer %>
