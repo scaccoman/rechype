@@ -62,5 +62,5 @@ app.use("/receipts", receipt);
 
 
 app.listen(process.env.PORT, process.env.IP, function(){
-    console.log("Receipt server running..");
+    console.log("Recipe server running..");
 });

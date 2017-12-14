@@ -15,6 +15,12 @@ router.get("/home", function(req, res) {
     res.render("home.ejs");
 });
 
+router.get("/cookies-handler", function(req, res) {
+    var cookieId = req.query.cookie;
+    console.log(cookieId);
+    res.send("Error");
+})
+
 router.get("/disclaimer", function(req, res) {
     res.render("disclaimer.ejs");
 });

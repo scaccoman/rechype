@@ -53,13 +53,13 @@
                 </div>
               </form>
               <ul class="nav navbar-nav navbar-right">
-                <% if (currentUser) { %>
+                <% if (user && user.name.length > 1) { %>
                   <li><a href="#">Logged in as <%= user.name.charAt(0).toUpperCase() + user.name.slice(1) %></a></li>
                 <% } %>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Account <span class="caret"></span></a>
                   <ul class="dropdown-menu">
-                    <% if (currentUser) { %>
+                    <% if (user) { %>
                       <li><a href="/auth/logout">Logout</a></li>
                       <li role="separator" class="divider"></li>
                       <li id="accountNav"><a href="/auth/profile">My Account</a></li>
