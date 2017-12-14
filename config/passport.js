@@ -1,4 +1,3 @@
-// load all the things we need
 var LocalStrategy    = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 var GoogleStrategy   = require('passport-google-oauth').OAuth2Strategy;
@@ -8,7 +7,7 @@ var User            = require('../models/user');
 var Preference      = require('../models/preference');
 
 // load the auth variables
-var configAuth = require('./auth'); // use this one for testing
+var configAuth = require('./auth');
 
 module.exports = function(passport) {
 

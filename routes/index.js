@@ -52,7 +52,7 @@ router.post("/search", function(req, res) {
 router.get("/data",function(req, res){
     Receipt.find({}, function(err, foundReceipts) {
         if (err) {
-            res.json({"error": "Error while getting your receipt yo the DataBase, please refresh the page"});
+            res.json({"error": "Error while getting your receipt from the DataBase, please refresh the page"});
         } else {
             var receiptsStr = JSON.stringify(foundReceipts);
             res.json(receiptsStr);
@@ -61,10 +61,8 @@ router.get("/data",function(req, res){
 });
 
 router.post("/data", auth.isLoggedIn, function(req, res){
-    //PROCESS INCOMING AJAX STRINGIFIED OBJ
     var bodyStr = JSON.stringify(req.body);
     var bodyObj = JSON.parse(bodyStr);
-    //PROCESS INCOMING AJAX STRINGIFIED OBJ
     bodyObj.author = {
         id: req.user._id,
         username: req.user.username
@@ -82,7 +80,9 @@ router.post("/data", auth.isLoggedIn, function(req, res){
 //==============
 //END RECIPES AJAX ROUTES
 //==============
-
+//==============
+//START SETTINGS AJAX ROUTES
+//==============
 router.get("/personalData", auth.isLoggedIn, function(req, res){
     Receipt.find({ 'author.id': req.user.id }, function(err, foundReceipts) {
         if (err) {
@@ -123,9 +123,7 @@ router.get("/getSettings", function(req, res){
     }
 });
 
-//==============
-//START SETTINGS AJAX ROUTES
-//==============
+
 router.get("/settings", auth.checkPreferenceOwnership, function(req,res){
     Preference.findOne({authorId: req.user.id}, function(err, userPreference){
         if (err){
