@@ -47,7 +47,7 @@ app.use(flash());
 
 //middleware to pass an object to all the routes (user to show login, singup and logout depending on the user state)
 app.use(function(req, res, next){
-    res.locals.user = req.user;
+    res.locals.user = req.email;
     res.locals.currentUser = req.user;
     // res.locals.error = req.flash("error");
     // res.locals.success = req.flash("success");
