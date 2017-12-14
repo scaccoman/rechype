@@ -32,7 +32,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({"extended" : false}));
 app.use("/", router);
 app.set("view engine", "ejs");
-// app.use(methodOverride("_method")); NOT WORKING - TO INVESTIGATE
 
 
 // PASSPORT SETUP
@@ -47,6 +46,7 @@ app.use(flash());
 
 //middleware to pass an object to all the routes (user to show login, singup and logout depending on the user state)
 app.use(function(req, res, next){
+    console.log("app.use:   " + req);
     res.locals.user = req.email;
     res.locals.currentUser = req.user;
     // res.locals.error = req.flash("error");
